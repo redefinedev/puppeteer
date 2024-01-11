@@ -23,7 +23,7 @@ jobs:
           # - chrome-headless
           - chrome-headful
           # - chrome-new-headless
-          - chrome-bidi
+          # - chrome-bidi return once redefine is installed
         shard:
           - 1-2
           - 2-2
@@ -73,18 +73,12 @@ jobs:
         id: browser
         run: node tools/download_chrome_bidi.mjs $HOME/.cache/puppeteer/chrome-canary
 
-      - name: Run all tests (for non-Linux)
-        if: ${{ matrix.os != 'ubuntu-latest' }}
-        run: |
-          echo "$PWD"
-          cat ./.mocharc.cjs
-          npm run test -- --shard '${{ matrix.shard }}' --test-suite ${{ matrix.suite }} --save-stats-to /tmp/artifacts/${{ github.event_name }}_INSERTID.json --config=./.mocharc.cjs
-        env:
-          PUPPETEER_EXECUTABLE_PATH: ${{ steps.browser.outputs.executablePath }}
-
       - name: Run all tests (for Linux)
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: xvfb-run --auto-servernum npm run test -- --shard '${{ matrix.shard }}' --test-suite ${{ matrix.suite }} --save-stats-to /tmp/artifacts/${{ github.event_name }}_INSERTID.json
+        run: |
+          echo "$PWD"
+          cat ./.mocharc.yaml
+          xvfb-run --auto-servernum npm run test -- --shard '${{ matrix.shard }}' --test-suite ${{ matrix.suite }} --save-stats-to /tmp/artifacts/${{ github.event_name }}_INSERTID.json --config=./.mocharc.yaml
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.browser.outputs.executablePath }}
       - uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4.0.0
