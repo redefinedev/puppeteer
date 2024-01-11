@@ -20,8 +20,8 @@ jobs:
           # - windows-latest
           # - macos-latest
         suite:
-          # - chrome-headless
-          - chrome-headful
+          - chrome-headless
+          # - chrome-headful
           # - chrome-new-headless
           # - chrome-bidi return once redefine is installed
         shard:
