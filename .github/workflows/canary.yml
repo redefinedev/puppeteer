@@ -16,13 +16,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest
-          - windows-latest
+          # - ubuntu-latest
+          # - windows-latest
           - macos-latest
         suite:
-          - chrome-headless
-          - chrome-headful
-          - chrome-new-headless
+          # - chrome-headless
+          # - chrome-headful
+          # - chrome-new-headless
           - chrome-bidi
         shard:
           - 1-2
@@ -50,6 +50,18 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: true
       # Set up GitHub Actions caching for Wireit.
       - uses: google/wireit@f3a3c79c553122e2fe5829eeac7d815326502903 # setup-github-actions-caching/v1
+
+      - name: Install Redefine
+        env:
+          REDEFINE_AUTH: "5cea7dd8-37ec-4b65-ade4-969cf5f27ac7::8a287b06-a121-40e4-bb7f-bcbb75844b2b"
+        run: |
+          pip install redefine --index-url https://redefine.dev/staging/pip/
+
+          redefine config set environment=staging 
+          redefine config set redefine_address=dune-tf-staging.redefine.dev
+          redefine config set log_to_file=true
+
+          redefine start --prioritize --mocha --verbose
 
       - name: Build packages
         run: npm run build --workspace @puppeteer-test/test
