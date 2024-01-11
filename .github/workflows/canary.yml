@@ -16,13 +16,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          # - ubuntu-latest
+          - ubuntu-latest
           # - windows-latest
-          - macos-latest
+          # - macos-latest
         suite:
-          # - chrome-headless
-          # - chrome-headful
-          # - chrome-new-headless
+          - chrome-headless
+          - chrome-headful
+          - chrome-new-headless
           - chrome-bidi
         shard:
           - 1-2
