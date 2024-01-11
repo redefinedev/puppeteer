@@ -62,6 +62,7 @@ jobs:
           redefine config set environment=staging 
           redefine config set redefine_address=dune-tf-staging.redefine.dev
           redefine config set log_to_file=true
+          redefine config set stable_branch=main
 
           redefine start --prioritize --mocha --verbose
 
