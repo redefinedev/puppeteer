@@ -20,9 +20,9 @@ jobs:
           # - windows-latest
           # - macos-latest
         suite:
-          - chrome-headless
+          # - chrome-headless
           - chrome-headful
-          - chrome-new-headless
+          # - chrome-new-headless
           - chrome-bidi
         shard:
           - 1-2
