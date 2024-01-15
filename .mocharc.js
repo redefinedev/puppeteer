@@ -1,7 +1,7 @@
 /**
  * @license
  * Copyright 2020 Google Inc.
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: Apache-2.01
  */
 
 let timeout = process.platform === 'win32' ? 20_000 : 10_000;
