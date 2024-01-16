@@ -1,4 +1,4 @@
-reporter: 'spec'
+reporter: 'dot'
 logLevel: 'debug'
 require: ['./test/build/mocha-utils.js', 'source-map-support/register']
 retries: 0
