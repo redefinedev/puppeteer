@@ -28,6 +28,7 @@ describe('ignoreHTTPSErrors', function () {
   });
 
   after(async () => {
+    console.log("---- hi redefine 2.0");
     await state.close();
   });
 
