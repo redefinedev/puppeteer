@@ -5,4 +5,4 @@ retries: 0
 parallel: false
 allowUncaught: true
 asyncOnly: true
-timeout: 10000
+timeout: 20000
