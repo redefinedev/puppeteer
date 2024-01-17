@@ -28,7 +28,7 @@ describe('ignoreHTTPSErrors', function () {
   });
 
   after(async () => {
-    console.log("---- hi there");
+    console.log("---- hi redefine");
     await state.close();
   });
 
